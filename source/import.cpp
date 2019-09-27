@@ -173,7 +173,7 @@ void importStreetpasses(Screens& screens, Streetpass::StreetpassManager& sm, Str
     const u32 messageSize = in.tellg();
     in.seekg(0, in.beg);
     std::vector<u8> messageBuffer(messageSize);
-    if(messageBuffer.size() >= messageSize) {
+    if(messageBuffer.capacity() >= messageSize) {
         in.read(reinterpret_cast<char*>(messageBuffer.data()), messageSize);
         if(!in) {
             printf("Error reading message.\n");
